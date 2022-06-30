@@ -35,7 +35,6 @@ export default function Dashboard(props) {
     const getUserDetails = async () => {
         getAuthUserDetails().then(
             async (success) => {
-                console.log(success.data)
                 setUserDetails(success.data);
                 await AsyncStorage.setItem('userDetails', JSON.stringify(success.data));
                 setLoading(false);
