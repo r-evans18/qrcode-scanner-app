@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from "@react-navigation/stack";
 import DashboardScreen from '../screens/Dashboard';
 import TabBarIcon from "../components/TabBarIcon";
+import ScanScreen from "../screens/ScanScreen";
 
 export default function BottomTabNavigator({
   containerRef,
@@ -31,6 +32,27 @@ export default function BottomTabNavigator({
         );
     }
 
+    const ScanStack = createStackNavigator();
+    function ScanStackScreen() {
+        return (
+            <ScanStack.Navigator>
+                <ScanStack.Screen
+                    name="Scan"
+                    component={ScanScreen}
+                    options={{
+                        title: 'Scan Discount',
+                        headerStyle: {
+                            backgroundColor: headerBackgroundColor,
+                        },
+                        headerTitleStyle: {
+                            color: 'white',
+                        },
+                    }}
+                />
+            </ScanStack.Navigator>
+        );
+    }
+
   return (
     <NavigationContainer
       ref={containerRef}
@@ -43,6 +65,16 @@ export default function BottomTabNavigator({
                   title: 'Dashboard',
                   tabBarIcon: ({focused}) => (
                       <TabBarIcon focused={focused} name="md-list" />
+                  ),
+              }}
+          />
+          <BottomTab.Screen
+              name="Scan"
+              component={ScanStackScreen}
+              options={{
+                  title: 'Scan',
+                  tabBarIcon: ({focused}) => (
+                      <TabBarIcon focused={focused} name="md-camera" />
                   ),
               }}
           />

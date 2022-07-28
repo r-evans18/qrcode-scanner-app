@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Card, HStack, Spinner, Text} from 'native-base';
+import {Spinner, Text} from 'native-base';
 import {ScrollView} from "react-native-gesture-handler";
 import {NativeBaseProvider} from "native-base/src/core/NativeBaseProvider";
 import DarkButton from "../components/DarkButton";
