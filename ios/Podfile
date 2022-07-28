@@ -5,6 +5,10 @@ require File.join(File.dirname(`node --print "require.resolve('@react-native-com
 require 'json'
 podfile_properties = JSON.parse(File.read(File.join(__dir__, 'Podfile.properties.json'))) rescue {}
 
+permissions_path = '../node_modules/react-native-permissions/ios'
+
+pod 'Permission-Camera', :path => "#{permissions_path}/Camera"
+
 platform :ios, podfile_properties['ios.deploymentTarget'] || '12.0'
 install! 'cocoapods',
   :deterministic_uuids => false
@@ -32,6 +36,8 @@ target 'bcodescanner' do
   # if !ENV['CI']
   #   use_flipper!()
   # end
+
+  pod 'RNPermissions', :path => '../node_modules/react-native-permissions'
 
   post_install do |installer|
     react_native_post_install(installer)
